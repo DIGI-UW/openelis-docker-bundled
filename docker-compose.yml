@@ -92,8 +92,9 @@ services:
             - ./volumes/logs/tomcatLogs/:/usr/local/tomcat/logs
             - ./volumes/properties/SystemConfiguration.properties:/var/lib/openelis-global/properties/SystemConfiguration.properties
             - ./volumes/test-map/test-loinc-map.csv:/var/lib/openelis-global/plugin-test-mappings/test-loinc-map.csv
+            - ./volumes/odoo/odoo-test-product-mapping.csv:/var/lib/openelis-global/odoo/odoo-test-product-mapping.csv
+            - ./volumes/ocl:/var/lib/openelis-global/ocl
             -  lucene_index-vol:/var/lib/lucene_index
-            
         secrets:
             - source: datasource.password
             - source: common.properties
