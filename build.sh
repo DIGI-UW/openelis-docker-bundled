@@ -31,6 +31,7 @@ createLinuxInstaller() {
     cp ./install/run.sh ${INSTALLER_CREATION_DIR}/${installerName}/run.sh
     cp ./install/upgrade.sh ${INSTALLER_CREATION_DIR}/${installerName}/upgrade.sh
     cp docker-compose.yml ${INSTALLER_CREATION_DIR}/${installerName}/docker-compose.yml
+    sed -i "s/:latest/:${dockerVersion}/g" ${INSTALLER_CREATION_DIR}/${installerName}/docker-compose.yml
     cp -r volumes/* ${INSTALLER_CREATION_DIR}/${installerName}/volumes
     cp OpenELIS-Global_DockerImage.tar.gz ${INSTALLER_CREATION_DIR}/${installerName}/dockerImage/OpenELIS-Global_DockerImage.tar.gz
     cp Postgres_DockerImage.tar.gz ${INSTALLER_CREATION_DIR}/${installerName}/dockerImage/Postgres_DockerImage.tar.gz
