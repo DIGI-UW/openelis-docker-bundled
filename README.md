@@ -49,7 +49,7 @@ For offline Installtion,where theres no Intenet acess,
 
        ./run.sh
 
-1. For Upgrading  OpenELIS-Global2 with an existing docker installer ,only Load the images in the new docker installer and re-satrt Global Global containers in your existing old Docker  installer
+1. For Upgrading  OpenELIS-Global2 with an existing docker installer ,only Load the images form the new docker installer with the following command, update the image tags to the new docker installer version and re-satrt Global Global containers in your existing old Docker  installer
 
        ./upgrade.sh
 
