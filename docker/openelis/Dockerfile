@@ -22,7 +22,7 @@ COPY ./volumes/odoo/odoo-test-product-mapping.csv /var/lib/openelis-global/odoo/
 # ---------------------------
 # Embed secrets (simulate Docker secrets)
 # ---------------------------
-
+USER root
 # Create secrets directory
 RUN mkdir -p /run/secrets \
     && chown -R tomcat_admin:tomcat /run/secrets \

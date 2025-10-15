@@ -97,6 +97,8 @@ services:
         container_name: external-fhir-api
         image: itechuw/openelis-global-2-fhir:latest
         platform: linux/amd64
+        ports:
+            - "8081:8080"
         depends_on:
             - db.openelis.org
             - certs    
@@ -158,9 +160,7 @@ services:
             - hapi.fhir.tester.home.refuse_to_fetch_third_party_urls=false
             - hapi.fhir.tester.home.fhir_version=R4
 
-        logging: *local-logging                       
-        secrets:
-            - source: hapi_application.yaml    
+        logging: *local-logging                          
 
          
     frontend.openelis.org:
