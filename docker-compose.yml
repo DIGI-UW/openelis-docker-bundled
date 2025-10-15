@@ -49,8 +49,11 @@ services:
         ports:
             - "15432:5432"
         restart: always
-        env_file:
-            - ./volumes/database/database.env
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=admin
+            - POSTGRES_DB=clinlims
+            - POSTGRES_INITDB_ARGS="--auth-host=md5" 
         volumes:
               # preserves the database between containers
             - ./volumes/database/data:/var/lib/postgresql/data                
