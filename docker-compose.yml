@@ -83,15 +83,16 @@ services:
             - TZ=America/New_York
               # context.xml doesn't seem to be able to pick up environment variables directly, so we are passing them in as CATALINA_OPTS
             - CATALINA_OPTS= -Ddatasource.url=jdbc:postgresql://db.openelis.org:5432/clinlims -Ddatasource.username=clinlims
-            - org.openelisglobal.remote.source.uri=http://fhir.openelis.org:8080/fhir/
-            - org.openelisglobal.remote.source.updateStatus=false
-            - org.openelisglobal.remote.source.identifier=Practitioner/*
-            - org.openelisglobal.remote.poll.frequency=120000
-            - org.openelisglobal.task.useBasedOn=true
-            # - org.itech.login.saml=true
-            # - org.itech.login.saml.registrationId=keycloak
-            # - org.itech.login.saml.entityId=OpenELIS-Global_saml
-            # - org.itech.login.saml.metadatalocation=http://keycloak.openelis.org:8080/realms/OpenELIS/protocol/saml/descriptor
+            - ORG_OPENELISGLOBAL_REMOTE_SOURCE_URI=http://fhir.openelis.org:8080/fhir/
+            - ORG_OPENELISGLOBAL_REMOTE_SOURCE_UPDATESTATUS=false
+            - ORG_OPENELISGLOBAL_REMOTE_SOURCE_IDENTIFIER=Practitioner/*
+            - ORG_OPENELISGLOBAL_REMOTE_POLL_FREQUENCY=120000
+            - ORG_OPENELISGLOBAL_TASK_USEBASEDON=true
+            # SAML Configuration
+            # - ORG_ITECH_LOGIN_SAML=true
+            # - ORG_ITECH_LOGIN_SAML_REGISTRATIONID=keycloak
+            # - ORG_ITECH_LOGIN_SAML_ENTITYID=OpenELIS-Global_saml
+            # - ORG_ITECH_LOGIN_SAML_METADATALOCATION=http://keycloak.openelis.org:8080/realms/OpenELIS/protocol/saml/descriptor
             
     fhir.openelis.org:
         container_name: external-fhir-api
