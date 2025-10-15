@@ -83,16 +83,21 @@ services:
             - TZ=America/New_York
               # context.xml doesn't seem to be able to pick up environment variables directly, so we are passing them in as CATALINA_OPTS
             - CATALINA_OPTS= -Ddatasource.url=jdbc:postgresql://db.openelis.org:5432/clinlims -Ddatasource.username=clinlims
-            - ORG_OPENELISGLOBAL_REMOTE_SOURCE_URI=http://fhir.openelis.org:8080/fhir/
-            - ORG_OPENELISGLOBAL_REMOTE_SOURCE_UPDATESTATUS=false
-            - ORG_OPENELISGLOBAL_REMOTE_SOURCE_IDENTIFIER=Practitioner/*
-            - ORG_OPENELISGLOBAL_REMOTE_POLL_FREQUENCY=120000
-            - ORG_OPENELISGLOBAL_TASK_USEBASEDON=true
+            # Remote server Configuration
+            # - ORG_OPENELISGLOBAL_REMOTE_SOURCE_URI=http://fhir.openelis.org:8080/fhir/
+            # - ORG_OPENELISGLOBAL_REMOTE_SOURCE_UPDATESTATUS=false
+            # - ORG_OPENELISGLOBAL_REMOTE_SOURCE_IDENTIFIER=Practitioner/*
+            # - ORG_OPENELISGLOBAL_REMOTE_POLL_FREQUENCY=120000
+            # - ORG_OPENELISGLOBAL_TASK_USEBASEDON=true
             # SAML Configuration
             # - ORG_ITECH_LOGIN_SAML=true
             # - ORG_ITECH_LOGIN_SAML_REGISTRATIONID=keycloak
             # - ORG_ITECH_LOGIN_SAML_ENTITYID=OpenELIS-Global_saml
             # - ORG_ITECH_LOGIN_SAML_METADATALOCATION=http://keycloak.openelis.org:8080/realms/OpenELIS/protocol/saml/descriptor
+
+        volumes:
+            -  key_trust-store-volume:/etc/openelis-global
+            -  lucene_index-vol:/var/lib/lucene_index
             
     fhir.openelis.org:
         container_name: external-fhir-api
