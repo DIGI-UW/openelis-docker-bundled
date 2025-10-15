@@ -8,6 +8,9 @@ FROM itechuw/openelis-global-2:latest
 # Plugins
 COPY ./volumes/plugins /var/lib/openelis-global/plugins
 
+# Tomcat configuration
+COPY ./volumes/tomcat/oe_server.xml /usr/local/tomcat/conf/server.xml
+
 # System properties
 COPY ./volumes/properties/SystemConfiguration.properties /var/lib/openelis-global/properties/SystemConfiguration.properties
 
