@@ -175,7 +175,7 @@ services:
         tty: true
 
     proxy:
-        image: itechuw/openelis-global-2-proxy-bundled:latest
+        image: itechuw/openelis-global-2-proxy-bundled:main
         container_name: openelisglobal-proxy
         platform: linux/amd64
         ports:

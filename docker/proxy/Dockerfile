@@ -18,3 +18,9 @@ USER nginx
 # Expose ports
 # ---------------------------
 EXPOSE 80 443
+
+ENTRYPOINT ["/bin/sh", "-c", "\
+    if [ -d '/etc/nginx/certs' ]; then chown -R nginx:nginx /etc/nginx/certs || true; chmod 644 /etc/nginx/certs/* || true; fi; \
+    if [ -d '/etc/nginx/keys' ]; then chown -R nginx:nginx /etc/nginx/keys || true; chmod 600 /etc/nginx/keys/* || true; fi; \
+    exec nginx -g 'daemon off;' \
+"]

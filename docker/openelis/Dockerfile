@@ -25,14 +25,16 @@ COPY ./volumes/odoo/odoo-test-product-mapping.csv /var/lib/openelis-global/odoo/
 USER root
 # Create secrets directory
 RUN mkdir -p /run/secrets \
-    && chown -R tomcat_admin:tomcat /run/secrets
+    && chown tomcat_admin:tomcat /run/secrets \
+    && chmod 700 /run/secrets
 
 # Copy secrets into /run/secrets
 COPY ./volumes/properties/datasource.password /run/secrets/datasource.password
 COPY ./volumes/properties/common.properties /run/secrets/common.properties
 
-RUN chmod 600 /run/secrets/datasource.password \
-    && chmod 600 /run/secrets/common.properties
+# Fix ownership and permissions for the files
+RUN chown tomcat_admin:tomcat /run/secrets/datasource.password /run/secrets/common.properties \
+    && chmod 600 /run/secrets/datasource.password /run/secrets/common.properties
 
 # Create empty directories for logs and Lucene index (writable)
 RUN mkdir -p /var/lib/openelis-global/logs /usr/local/tomcat/logs /var/lib/lucene_index \
