@@ -6,6 +6,9 @@ RUN apt-get update && apt-get install -y gettext-base && rm -rf /var/lib/apt/lis
 # PostgreSQL will automatically run any *.sql or *.sh files in this folder
 COPY ./volumes/database/dbInit /docker-entrypoint-initdb.d
 
+RUN chmod 644 /docker-entrypoint-initdb.d/*.sql \
+    && chmod 755 /docker-entrypoint-initdb.d/*.sh
+
 # Optional: Set working directory (not strictly needed)
 WORKDIR /docker-entrypoint-initdb.d
 
