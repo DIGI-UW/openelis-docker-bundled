@@ -35,8 +35,8 @@ RUN mkdir -p /run/secrets \
 COPY ./volumes/properties/common.properties /run/secrets/common.properties
 
 # Fix ownership and permissions for the files
-RUN chown tomcat_admin:tomcat /run/secrets/datasource.password /run/secrets/common.properties \
-    && chmod 600 /run/secrets/datasource.password /run/secrets/common.properties
+RUN chown tomcat_admin:tomcat  /run/secrets/common.properties \
+    && chmod 600  /run/secrets/common.properties
 
 # Create empty directories for logs and Lucene index (writable)
 RUN mkdir -p /var/lib/openelis-global/logs /usr/local/tomcat/logs /var/lib/lucene_index \
