@@ -1,12 +1,7 @@
 # Use the official PostgreSQL 14.4 image as base
 FROM postgres:14.4
 
-# Set environment variables for default DB, user, and password
-# These will be used when the container is first initialized
-ENV POSTGRES_DB=clinlims
-ENV POSTGRES_USER=clinlims
-ENV POSTGRES_PASSWORD=clinlims
-
+RUN apt-get update && apt-get install -y gettext-base && rm -rf /var/lib/apt/lists/*
 # Copy initialization scripts and data files into the container
 # PostgreSQL will automatically run any *.sql or *.sh files in this folder
 COPY ./volumes/database/dbInit /docker-entrypoint-initdb.d

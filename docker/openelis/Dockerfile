@@ -32,7 +32,6 @@ RUN mkdir -p /run/secrets \
     && chmod 700 /run/secrets
 
 # Copy secrets into /run/secrets
-COPY ./volumes/properties/datasource.password /run/secrets/datasource.password
 COPY ./volumes/properties/common.properties /run/secrets/common.properties
 
 # Fix ownership and permissions for the files

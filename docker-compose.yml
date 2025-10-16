@@ -54,6 +54,9 @@ services:
             - POSTGRES_PASSWORD=admin
             - POSTGRES_DB=clinlims
             - POSTGRES_INITDB_ARGS="--auth-host=md5" 
+
+            - DB_PASSWORD=clinlims
+            - DB_SUPERUSER_PASSWORD=superuser
         volumes:
               # preserves the database between containers
             - ./volumes/database/data:/var/lib/postgresql/data                
@@ -85,7 +88,7 @@ services:
             - DEFAULT_PW=adminADMIN! 
             - TZ=America/New_York
               # context.xml doesn't seem to be able to pick up environment variables directly, so we are passing them in as CATALINA_OPTS
-            - CATALINA_OPTS= -Ddatasource.url=jdbc:postgresql://db.openelis.org:5432/clinlims -Ddatasource.username=clinlims
+            - CATALINA_OPTS= -Ddatasource.url=jdbc:postgresql://db.openelis.org:5432/clinlims -Ddatasource.username=clinlims -Ddatasource.password=clinlims
             # Remote server Configuration
             # - ORG_OPENELISGLOBAL_REMOTE_SOURCE_URI=http://fhir.openelis.org:8080/fhir/
             # - ORG_OPENELISGLOBAL_REMOTE_SOURCE_UPDATESTATUS=false
