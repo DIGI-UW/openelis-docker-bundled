@@ -1,5 +1,5 @@
 # Start from the official OpenELIS image
-FROM itechuw/openelis-global-2:latest
+FROM itechuw/openelis-global-2:3.2.0.2
 
 # ---------------------------
 # Embed only volume files
